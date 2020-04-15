@@ -4,11 +4,8 @@
   "description": "Blogging for spreading our thoughts",
   "main": "server.js",
   "scripts": {
-    "client-install": "npm install --prefix client",
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start": "set NODE_ENV=production && node server",
+    "dev": "nodemon server"
   },
   "author": "ariqshd",
   "license": "MIT",

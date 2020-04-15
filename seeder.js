@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 dotenv.config({ path: './config/config.env' });
 
 // Load models
-const Profile = require('./models/Profile');
+// const Profile = require('./models/Profile');
 const Post = require('./models/Post');
 const User = require('./models/User');
 
@@ -20,9 +20,9 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 // Read JSON files
-const bootcamps = JSON.parse(
-  fs.readFileSync(`${__dirname}/_data/profile.json`, 'utf-8')
-);
+// const bootcamps = JSON.parse(
+//   fs.readFileSync(`${__dirname}/_data/profile.json`, 'utf-8')
+// );
 const courses = JSON.parse(
   fs.readFileSync(`${__dirname}/_data/posts.json`, 'utf-8')
 );
@@ -34,9 +34,9 @@ const users = JSON.parse(
 // Import into DB
 const importData = async () => {
   try {
-    await Profile.create(profile);
-    await Post.create(posts);
+    // await Profile.create(profile);
     await User.create(users);
+    // await Post.create(posts);
 
     console.log('Data were imported...'.green.inverse);
     process.exit();
@@ -48,7 +48,7 @@ const importData = async () => {
 // Delete data
 const deleteData = async () => {
   try {
-    await Profile.deleteMany();
+    // await Profile.deleteMany();
     await Post.deleteMany();
     await User.deleteMany();
 

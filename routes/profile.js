@@ -4,10 +4,9 @@ const {
   getProfiles,
   getProfileUser,
   addProfile,
+  updateProfile,
   deleteProfile,
-} = require('../controllers/posts');
-
-const Post = require('../models/Post');
+} = require('../controllers/profile');
 
 const router = express.Router({ mergeParams: true });
 
@@ -18,6 +17,7 @@ router
   .route('/')
   .get(protect, getMyProfile)
   .post(protect, addProfile)
+  .put(protect, updateProfile)
   .delete(protect, deleteProfile);
 
 router.route('/all').get(getProfiles);
