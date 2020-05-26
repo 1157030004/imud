@@ -1,21 +1,58 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 export const Register = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    password2: "",
+  });
+
+  const { name, email, password, password2 } = formData;
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (password !== password2) {
+      console.log("Passwords do not match");
+    } else {
+      console.log("SUCCESS");
+    }
+  };
+
   return (
     <Fragment>
       <div className="register-photo">
         <div className="form-container">
           <div className="image-holder"></div>
-          <form method="post">
+          <form method="post" onSubmit={(e) => onSubmit(e)}>
             <h2 className="text-center">
               <strong>Create</strong> an account.
             </h2>
             <div className="form-group">
               <input
                 className="form-control"
+                type="text"
+                name="name"
+                value={name}
+                onChange={(e) => onChange(e)}
+                placeholder="name"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <input
+                className="form-control"
                 type="email"
                 name="email"
+                value={email}
+                onChange={(e) => onChange(e)}
                 placeholder="Email"
+                required
               />
             </div>
             <div className="form-group">
@@ -23,15 +60,23 @@ export const Register = () => {
                 className="form-control"
                 type="password"
                 name="password"
+                value={password}
+                onChange={(e) => onChange(e)}
                 placeholder="Password"
+                minLength="6"
+                required
               />
             </div>
             <div className="form-group">
               <input
                 className="form-control"
                 type="password"
-                name="password-repeat"
+                name="password2"
+                value={password2}
+                onChange={(e) => onChange(e)}
                 placeholder="Password (repeat)"
+                minLength="6"
+                required
               />
             </div>
             <div className="form-group">
@@ -47,9 +92,9 @@ export const Register = () => {
                 Register
               </button>
             </div>
-            <a className="already" href="#">
+            <Link className="already" to="/login">
               You already have an account? Login here.
-            </a>
+            </Link>
           </form>
         </div>
       </div>
