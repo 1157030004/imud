@@ -8,6 +8,7 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
+import Editor from "./components/layout/Blog/Editor";
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -23,6 +24,7 @@ const App = () => (
           <Switch>
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route path="/editor" component={Editor} />
           </Switch>
         </section>
         <Footer />
